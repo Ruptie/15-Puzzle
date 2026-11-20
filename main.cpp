@@ -1,33 +1,39 @@
 #include <iostream>
 #include "Board.h"
-#include "userInput.h"
+#include "boardRendered.h"
 #include "Choice.h"
+#include "Settings.h"
 
 int main()
 {
 	using Direction = Choice;
 
 	Board board{};
-	bool running{ true };
-	std::cout << board;
-
-	while (running) {
-		
-		Choice choice{ UserInput::getUserInput() };
+	board.shuffle();
 	
+	BoardRenderer& renderer{
+		BoardRenderer::getRenderer(Constants::windowTitle, Constants::windowWidth, Constants::windowHeight)
+	};
+
+	int moveIndex{ 0 };
+
+	while (!renderer.shouldClose()) {
+	
+		renderer.draw(board, moveIndex);
+		Choice choice{ renderer.getChoice() };
+
 		if (choice == Choice::quit) {
 			std::cout << "Bye\n";
-			running = false;
 			break;
 		}
-
-		board.slide(-choice);
-		std::cout << board;
-		UserInput::printInputFeedback(choice);
-
+		if (choice != Choice::unknown) 
+		{
+			++moveIndex;
+			board.slide(-choice);
+		}
+		
 		if (board.hasWom()) {
 			std::cout << "You Win!\n";
-			running = false;
 			break;
 		}
 	}

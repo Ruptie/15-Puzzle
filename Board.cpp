@@ -37,15 +37,3 @@ void Board::shuffle() {
 		slide(getRandomDirection());
 	}
 }
-
-bool Board::hasWom() const {
-	constexpr std::array<std::array<Tile, Constants::gridSize>, Constants::gridSize> winningGrid{ 
-	{
-		{ Tile{ 1 }, Tile{ 2 }, Tile{ 3 }, Tile{ 4 } },
-		{ Tile{ 5 }, Tile{ 6 }, Tile{ 7 }, Tile{ 8 } },
-		{ Tile{ 9 }, Tile{ 10 }, Tile{ 11 }, Tile{ 12 } },
-		{ Tile{ 13 }, Tile{ 14 }, Tile{ 15 }, Tile{} } }
-	};
-
-	return m_grid == winningGrid;
-}
