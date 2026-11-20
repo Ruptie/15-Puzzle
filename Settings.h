@@ -3,13 +3,14 @@
 
 namespace Constants{
 
-	constexpr inline int windowWidth{ 1280 };
-	constexpr inline int windowHeight{ 720 };
+	constexpr inline int windowWidth{ 1920 };
+	constexpr inline int windowHeight{ 1080 };
+	constexpr inline int windowSize{ 1080 };
 	constexpr inline const char* windowTitle{ "15 Puzzle by Danilo" };
 
 
 	constexpr inline int maxValue{ 15 };
-	constexpr inline int minValue{ 1 }; // TODO: remove
+	constexpr inline int minValue{ 1 };
 	constexpr inline int gridSize{ 4 }; // TODO: remove
 	constexpr inline int consoleLines{ 35 }; // TODO: remove
 }
