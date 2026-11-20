@@ -10,14 +10,14 @@ using Direction = Choice;
 std::ostream& operator<<(std::ostream& out, Board board) {
 
 	for (auto i{ 0 }; i < Constants::consoleLines; ++i) {
-		std::cout << '\n';
+		out << '\n';
 	}
 
 	for (const auto& row : board.m_grid) {
 		for (const auto& elem : row) {
 			out << elem;
 		}
-		std::cout << '\n';
+		out << '\n';
 	}
 
 	return out;
@@ -32,7 +32,7 @@ void Board::slide(Direction direction) {
 }
 
 void Board::shuffle() {
-	constexpr int passes{ Constants::gridSize * Constants::gridSize * Constants::gridSize };
+	constexpr int passes{ Constants::gridSize * Constants::gridSize * Constants::gridSize * Constants::gridSize };
 	for (auto i{ 0 }; i < passes; ++i) {
 		slide(getRandomDirection());
 	}
